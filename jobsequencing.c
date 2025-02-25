@@ -54,12 +54,12 @@ void job_sequencing(Job jobs[], int n) {
 
 int main() {
     Job jobs[] = {
-        {"Maruti Wagon R", 5, 500},
-        {"Nisan Micra", 3, 400},
-        {"Toyota Innova", 3, 1200},
-        {"TATA Neyon", 2, 700},
-        {"Renault Kiger", 4, 750},
-        {"Maruti Grand Viattara", 2, 1100}
+        {"1> Maruti Wagon R", 5, 500},
+        {"2> Nisan Micra", 3, 400},
+        {"3> Toyota Innova", 3, 1200},
+        {"4> TATA Neyon", 2, 700},
+        {"5> Renault Kiger", 4, 750},
+        {"6> Maruti Grand Viattara", 2, 1100}
     };
     int n = sizeof(jobs)/sizeof(jobs[0]);
     job_sequencing(jobs, n);
