@@ -2,19 +2,16 @@
 
 #define MAX 10
 
-// Structure to represent an edge
 struct Edge {
     int src, dest, weight;
 };
 
-// Function to find the parent of a node (with path compression)
 int findParent(int parent[], int node) {
     if (parent[node] == node)
         return node;
     return parent[node] = findParent(parent, parent[node]);
 }
 
-// Function to perform union of two sets
 void unionSets(int parent[], int rank[], int u, int v) {
     int rootU = findParent(parent, u);
     int rootV = findParent(parent, v);
@@ -29,7 +26,6 @@ void unionSets(int parent[], int rank[], int u, int v) {
     }
 }
 
-// Function to sort edges by weight using Bubble Sort
 void sort(struct Edge edges[], int edgeCount) {
     for (int i = 0; i < edgeCount - 1; i++) {
         for (int j = 0; j < edgeCount - i - 1; j++) {
@@ -42,22 +38,15 @@ void sort(struct Edge edges[], int edgeCount) {
     }
 }
 
-// Function to implement Kruskal’s Algorithm
 void kruskalMST(struct Edge edges[], int nodeCount, int edgeCount) {
     int parent[MAX], rank[MAX], mstWeight = 0;
     struct Edge result[MAX];
     int e = 0, i = 0;
-
-    // Initialize parent and rank arrays
     for (int v = 0; v < nodeCount; v++) {
         parent[v] = v;
         rank[v] = 0;
     }
-
-    // Sort edges by weight
     sort(edges, edgeCount);
-
-    // Pick the smallest edges while avoiding cycles
     while (e < nodeCount - 1 && i < edgeCount) {
         struct Edge nextEdge =  [i++];
         int rootSrc = findParent(parent, nextEdge.src);
@@ -70,7 +59,6 @@ void kruskalMST(struct Edge edges[], int nodeCount, int edgeCount) {
         }
     }
 
-    // Print the MST
     printf("Edges in Minimum Spanning Tree:\n");
     for (i = 0; i < e; i++)
         printf("%c - %c : %d\n", result[i].src + 'A', result[i].dest + 'A', result[i].weight);
@@ -78,7 +66,6 @@ void kruskalMST(struct Edge edges[], int nodeCount, int edgeCount) {
     printf("Total Minimum Cost: %d\n", mstWeight);
 }
 
-// Main function
 int main() {
     int nodeCount = 6, edgeCount = 9;
     struct Edge edges[] = {
